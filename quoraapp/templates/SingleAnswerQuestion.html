@@ -1,0 +1,71 @@
+<title>Question</title>
+{% include "base.html"%}
+{% for q in question %}
+    <center><h1>{{q.question_title}}</h1></center>
+    {% with q.id as great %}
+   <center><a href="/addBookmark/{{great}}/{{q.id}}">Bookmark</a>
+    <a href="/addAnswer/{{q.id}}/">Add Answer</a></center>
+    {% if answer_list %}
+        {% for answer in answer_list %}
+            <br>
+            <div class="container">
+  <div class="card">
+    <div class="card-body">
+        <p><b>Answer By :{{answer.answer_by}}</b></p>
+            <p><b>Answer: {{answer.answer_ans}}</b></p>
+            <a href="/upvote/{{great}}/{{answer.id}}/">Upvote</a> : {{answer.upvote}}
+                <div class="container">
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header">
+                                <a class="card-link" data-toggle="collapse" href="#collapse{{answer.id}}">
+                                    Comments
+                                </a>
+                            </div>
+                            <div id="collapse{{answer.id}}" class="collapse" data-parent="#accordion">
+                                <div class="card-body">
+                                    {% if answer.for_flag %}
+                                    {% for comment in comments %}
+                                    {% if comment.for_comment_id == answer.id %}
+                                    <p><b>Comment By :{{comment.comment_by}}</b></p>
+                                    <p><b>Comment: {{comment.comment_text}}</b></p>
+                                    {% endif %}
+                                    {% endfor %}
+                                    <a href="/addComment/{{great}}/{{answer.id}}/">Add Comment</a>
+                                    <hr>
+                                    {% else %}
+                                    <p><b>NO Comments are available.</b></p>
+                                    <a href="/addComment/{{great}}/{{answer.id}}/">Add Comment</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                 </div>
+            </div>
+        </div>
+    </div>
+            {% endfor %}
+
+    {% else %}
+            <br>
+        <center><b><h2>NO Answer are available.</h2></b></center>
+    {% endif %}
+            {% endwith %}
+    {% endfor %}
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

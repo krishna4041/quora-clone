@@ -1,0 +1,22 @@
+{% include "base.html"%}
+<style>
+.rectangle {
+  margin:100px auto;
+  height: 220px ;
+  width: 620px ;
+  border-style: solid;
+  border-width: 2px;
+  background-color: #FFFFFF;
+}
+</style>
+{% if feed_list %}
+    {% for feed in feed_list %}
+            <div class="rectangle" align="center">
+                <p><font size="4"><center>Question By : {{feed.question_by}}</center></font><br><hr><a href="/Question/{{feed.id}}/"><font size="6"><center>Question : {{feed.question_title}}</center></font></a></p>
+            </div>
+        <hr>
+    {% endfor %}
+{% else %}
+    <center><h1>NO Questions are available.</h1></center>
+{% endif %}
+</table>

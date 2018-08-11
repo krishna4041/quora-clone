@@ -1,0 +1,22 @@
+
+{% include "base.html"%}
+<style>
+.rectangle {
+  margin:100px auto;
+  height: 220px ;
+  width: 620px ;
+  border-style: solid;
+  border-width: 2px;
+  background-color: #FFFFFF;
+}
+</style>
+{% if answer %}
+    {% for ans in answer %}
+        <div class="rectangle" align="center">
+  <p><font size="4"><center>Question By : {{ans.question_by}}</center></font><br><hr><a href="/Question/{{ans.id}}/"><font size="6"><center>Question : {{ans.question_title}}</center></font></a></p>
+            <hr>
+        </div>
+    {% endfor %}
+{% else %}
+    <center><h1>NO Book Marks a are available.</h1></center>
+{% endif %}

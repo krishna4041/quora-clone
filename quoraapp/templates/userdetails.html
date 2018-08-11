@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "base.html"%}
+<style>
+button {
+    border-radius: 8px;
+    background-color: #000000;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 10%;
+}
+
+#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 30%;
+}
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color:;
+    color: black;
+}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>User details Update</title>
+</head>
+<body>
+    <center>
+                {% for u in user %}
+                    <table id="customers" align="center">
+          <tr>
+            <th>First Name</th>
+            <th>{{u.first_name}}</th>
+          </tr>
+          <tr>
+            <td><b>LastName</b></td>
+            <td><b>{{u.last_name}}</b></td>
+          </tr>
+          <tr>
+            <td><b>UserName</b></td>
+            <td><b>{{u.username}}</b></td>
+          </tr>
+          <tr>
+            <td><b>Email</b></td>
+            <td><b>{{u.email}}</b></td>
+          </tr>
+        </table>
+        <br>
+        <button><a href="/editprofile/{{u.id}}" class="button">Edit</a></button>
+            {% endfor %}
+    </center>
+
+</body>
+</html>
