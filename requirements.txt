@@ -33,9 +33,7 @@ requests==2.18.4
 simplegeneric==0.8.1
 six==1.11.0
 sqlparse==0.2.4
-strcmd==0.1
 traitlets==4.3.2
-UNKNOWN==0.0.0
 urllib3==1.22
 virtualenv==15.2.0
 wcwidth==0.1.7
