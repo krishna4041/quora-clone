@@ -9,6 +9,7 @@ from django.shortcuts import get_object_or_404
 from django.views.generic import ListView,CreateView,RedirectView,UpdateView
 from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import redirect
+from quoraapp.Forms import *
 from quoraapp.Forms.auth import *
 from quoraapp.Forms.commentform import *
 from quoraapp.Forms.questionForm import *
