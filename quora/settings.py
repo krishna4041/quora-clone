@@ -80,7 +80,7 @@ DATABASES = {
         'NAME': 'quoraappdb',
         'HOST': 'localhost',
         'USER':"root",
-        'PASSWORD': ""
+        'PASSWORD': "root"
     }
 }
 
