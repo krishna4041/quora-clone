@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-
+from decouple import Config, RepositoryEnv
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -22,8 +22,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '@x@3qw@t9o*gt1re^36*c48!j=p^p8_q41fn*!f+^ngn&+73g2'
 
+
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -133,7 +134,7 @@ STATICFILES_DIRS = (
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
-
+from decouple import config
 import dj_database_url
 db_from_env=dj_database_url.config(conn_max_age=None)
 DATABASES['default'].update(db_from_env)
@@ -141,6 +142,13 @@ DATABASES['default'].update(db_from_env)
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+SECRET_KEY = config('SECRET_KEY')
+DEBUG = config('DEBUG', default=False, cast=bool)
+DATABASES = {
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
+}
 
 STATIC_ROOT=os.path.join(os.path.dirname(BASE_DIR),"static_cdn")
 
